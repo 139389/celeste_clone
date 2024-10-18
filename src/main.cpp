@@ -4,7 +4,9 @@
 #define GL_GLEXT_PROTOTYPES
 #include "glcorearb.h"
 
+
 #include "input.h"
+
 
 // #############################################################################
 //                           Platform Includes
@@ -16,24 +18,22 @@
 
 #include "gl_renderer.cpp"
 
-int main()
-{
+int main() {
 
-    BumpAllocator transientStorage = make_bump_allocator(MB(50));
+  BumpAllocator transientStorage = make_bump_allocator(MB(50));
 
-    input.screenSizeX = 1200;
-    input.screenSizeY = 720;
+  input.screenSizeX = 1200;
+  input.screenSizeY = 720;
 
-    platform_create_window(input.screenSizeX, input.screenSizeY, "testwindow");
+  platform_create_window(input.screenSizeX, input.screenSizeY, "testwindow");
 
-    gl_init(&transientStorage);
+  gl_init(&transientStorage);
 
-    while (running)
-    {
-        // update
-        platform_update_window();
-        gl_render();
-        platform_swap_buffers();
-    }
-    return 0;
+  while (running) {
+    // update
+    platform_update_window();
+    gl_render();
+    platform_swap_buffers();
+  }
+  return 0;
 };
